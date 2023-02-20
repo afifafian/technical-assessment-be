@@ -113,21 +113,31 @@ Response (200 - OK):
 ## POST /pokemon
 
 Headers:
+
 Key | Desc
 --- | ---
 Authorization | Using Bearer Auth Token (required, 'Admin' role only)
 
 Request body:
-​
-```json
+
+Key | Detail
+--- | ---
+name | string/required
+type | array of strings/required
+description | string/required
+monster_category | string/required
+base_stats | object/required
+image | string/optional
+
 Example:
+```json
 {
-  "name": "Spearrow", <string, required>
-  "type": ["flying"], <array of strings, required>
-  "description": "Spearrow is a flying type pokemon", <string, required>
-  "monster_category": "Flying Monster", <string, required>
-  "base_stats": { "hp": 340, "speed": 250, "def": 150, "attack": 340 }, <object, required>
-  "image": "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/21.svg" <string, optional>
+  "name": "Spearrow",
+  "type": ["flying"],
+  "description": "Spearrow is a flying type pokemon",
+  "monster_category": "Flying Monster",
+  "base_stats": { "hp": 340, "speed": 250, "def": 150, "attack": 340 },
+  "image": "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/21.svg"
 }
 ```
 ​
@@ -166,15 +176,24 @@ id | Pokemon ID from a pokemon that wants to be updated
 
 Request body:
 ​
-```json
+Key | Detail
+--- | ---
+name | string/required
+type | array of strings/required
+description | string/required
+monster_category | string/required
+base_stats | object/required
+image | string/optional
+
 Example:
+```json
 {
-  "name": "Spearrow", <string, required>
-  "type": ["flying"], <array of strings, required>
-  "description": "Spearrow is a flying type pokemon", <string, required>
-  "monster_category": "Flying Monster", <string, required>
-  "base_stats": { "hp": 340, "speed": 250, "def": 150, "attack": 340 }, <object, required>
-  "image": "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/21.svg" <string, optional>
+  "name": "Spearrow",
+  "type": ["flying"],
+  "description": "Spearrow is a flying type pokemon",
+  "monster_category": "Flying Monster",
+  "base_stats": { "hp": 340, "speed": 250, "def": 150, "attack": 340 },
+  "image": "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/21.svg"
 }
 ```
 ​
