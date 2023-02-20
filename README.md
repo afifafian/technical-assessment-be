@@ -44,8 +44,9 @@ type | filter pokemon by type, can be multiple value, separated by comma
 sortBy | sort list of pokemon by id or name, default to id
 sortType | order the sortBy to be ascending or descending, default to ascending
 
+Example:
 ```json
-Example usage: /pokemon?type=water,electric&search=pika&sortBy=name&sortType=desc
+/pokemon?type=water,electric&search=pika&sortBy=name&sortType=desc
 ```
 ​
 Response (200 - OK):
@@ -250,14 +251,21 @@ Response (200 - OK):​
 ## POST /users/register
 
 Request body:
-​
-```json
+
+Key | Detail
+--- | ---
+name | string/required
+username | string/required
+password | string/required
+role | string/required
+
 Example:
+```json
 {
-  "name": "Ash", <string, required>
-  "username": "ashketchum123", <string, required>
-  "password": "securePassword123", <string, required>
-  "role": "Admin", <string, required>
+  "name": "Ash",
+  "username": "ashketchum123",
+  "password": "securePassword123",
+  "role": "Admin",
 }
 ```
 ​
@@ -277,12 +285,17 @@ Response (201 - CREATED):
 ## POST /users/login
 
 Request body:
-​
-```json
+
+Key | Detail
+--- | ---
+username | string/required
+password | string/required
+
 Example:
+```json
 {
-  "username": "ashketchum123", <string, required>
-  "password": "securePassword123", <string, required>
+  "username": "ashketchum123",
+  "password": "securePassword123",
 }
 ```
 ​
@@ -306,10 +319,15 @@ Response (200 - OK):
 ## POST /user-captured-pokemon
 
 Request body:
-​
+
+Key | Detail
+--- | ---
+pokemon_id | integer/required
+
+Example:
 ```json
 {
-  "pokemon_id": 4 <integer, required>
+  "pokemon_id": 4
 }
 ```
 ​
