@@ -6,9 +6,11 @@ export default {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'ta_db',
-      user:     'postgres',
-      password: 'postgres'
+      database: process.env.DB_NAME,
+      user:     process.env.DB_USER,
+      password: process.env.DB_PWD,
+      host: 'localhost',
+      port: 5432,
     },
     pool: {
       min: 2,
@@ -22,9 +24,11 @@ export default {
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'ta_db',
-      user:     'postgres',
-      password: 'postgres'
+      database: process.env.DB_NAME,
+      user:     process.env.DB_USER,
+      password: process.env.DB_PWD,
+      host: 'localhost',
+      port: 5432,
     },
     pool: {
       min: 2,
@@ -38,9 +42,11 @@ export default {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'ta_db',
-      user:     'postgres',
-      password: 'postgres'
+      database: process.env.DB_NAME,
+      user:     process.env.DB_USER,
+      password: process.env.DB_PWD,
+      host: 'localhost',
+      port: 5432,
     },
     pool: {
       min: 2,

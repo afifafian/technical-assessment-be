@@ -16,7 +16,7 @@ export class PokemonServices {
       let where = ``;
 
       if (queries.type) {
-        const type = queries.type.toUpperCase().split(',');
+        const type = queries.type.toUpperCase().replaceAll(" ", "").split(',');
         const formattedType = JSON.stringify(type).replaceAll("\"", "'")
         where += `
           ARRAY ${formattedType} && ${pokemonTable}.type
