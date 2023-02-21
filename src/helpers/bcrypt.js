@@ -3,7 +3,7 @@ import pkg from 'bcryptjs';
 const hash = (password) => {
   try {
     const { hashSync } = pkg;
-    return hashSync(password, +process.env.BCRYPT_SALT || 10);
+    return hashSync(password, 10);
   } catch (err) {
     throw err;
   }

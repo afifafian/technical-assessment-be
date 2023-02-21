@@ -10,16 +10,16 @@ export class PokemonServices {
       // Basic Query Identifiers
       let select = [
         `${pokemonTable}.id`, `${pokemonTable}.name`, `${pokemonTable}.image`,
-        `${pokemonTable}.monster_category`, `${pokemonTable}.type`
+        `${pokemonTable}.monster_category`, `${pokemonTable}.type`, `${pokemonTable}.status` 
       ];
       let joinQuery = ``;
-      let where = ``;
+      let where = `${pokemonTable}.status = '${variables.pokemonStatus.active}'`;
 
       if (queries.type) {
         const type = queries.type.toUpperCase().replaceAll(" ", "").split(',');
         const formattedType = JSON.stringify(type).replaceAll("\"", "'")
         where += `
-          ARRAY ${formattedType} && ${pokemonTable}.type
+          AND ARRAY ${formattedType} && ${pokemonTable}.type
         `;
       }
 
@@ -61,6 +61,7 @@ export class PokemonServices {
         .select(select)
         .joinRaw(joinQuery)
         .where(`${pokemonTable}.id`, id)
+        .andWhere(`${pokemonTable}.status`, variables.pokemonStatus.active)
         .limit(1);
 
       return pokemon[0];
@@ -85,6 +86,15 @@ export class PokemonServices {
 
   static async updatePokemon(id, body) {
     try {
+      const pokemon = await this.getPokemon(id);
+      if (!pokemon) {
+        throw {
+          name: variables.errNames.customValidation,
+          message: 'Pokemon data is not found!',
+          statusCode: 404
+        };
+      }
+
       const trimmedType = body.type.map(e => e.toUpperCase());
       const dataUpdate = { ...body, type: trimmedType };
       const updatedPokemon = await knex(pokemonTable)
@@ -100,8 +110,17 @@ export class PokemonServices {
 
   static async deletePokemon(id) {
     try {
+      const pokemon = await this.getPokemon(id);
+      if (!pokemon) {
+        throw {
+          name: variables.errNames.customValidation,
+          message: 'Pokemon data is not found!',
+          statusCode: 404
+        };
+      }
+
       const deletedPokemon = await knex(pokemonTable)
-        .delete()
+        .update({ status: variables.pokemonStatus.deleted })
         .where('id', id);
 
       return deletedPokemon;

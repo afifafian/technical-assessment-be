@@ -31,6 +31,7 @@ export class PokemonListResponse {
         type: data.type,
         image: data.image,
         is_captured: !!data.id_captured_pokemon,
+        status: data.status,
       };
     })
     return result;

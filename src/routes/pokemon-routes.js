@@ -8,6 +8,6 @@ router.get('/', openAuth, PokemonControllers.get);
 router.get('/:id', openAuth, PokemonControllers.getDetail);
 router.post('/', closedAuth, adminOnly, PokemonControllers.create);
 router.put('/:id', closedAuth, adminOnly, PokemonControllers.update);
-router.delete('/:id', closedAuth, adminOnly, PokemonControllers.destroy);
+router.patch('/delete/:id', closedAuth, adminOnly, PokemonControllers.softDelete);
 
 export default router;

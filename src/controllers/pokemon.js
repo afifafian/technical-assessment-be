@@ -87,15 +87,6 @@ export class PokemonControllers {
       const input = new PokemonBodyRequest();
       const fixedBody = requestAdjustment(input, body);
 
-      const pokemon = await PokemonServices.getPokemon(params.id);
-      if (!pokemon) {
-        throw {
-          name: variables.errNames.customValidation,
-          message: 'Pokemon data is not found!',
-          statusCode: 404
-        };
-      }
-
       // Body Request Validations
       errs.push(required(fixedBody, 'name'));
       errs.push(required(fixedBody, 'monster_category'));
@@ -119,18 +110,9 @@ export class PokemonControllers {
     }
   }
 
-  static async destroy(req, res, next) {
+  static async softDelete(req, res, next) {
     try {
       const { id } = req.params;
-
-      const pokemon = await PokemonServices.getPokemon(id);
-      if (!pokemon) {
-        throw {
-          name: variables.errNames.customValidation,
-          message: 'Pokemon data is not found!',
-          statusCode: 404
-        };
-      }
 
       await PokemonServices.deletePokemon(id);
 

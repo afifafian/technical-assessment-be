@@ -15,15 +15,6 @@ export class UserCapturedPokemonControllers {
       const errs = errMessages.filter((e) => e !== undefined);
       if (errs.length) throw { name: variables.errNames.customValidation, message: errs };
 
-      const pokemon = await PokemonServices.getPokemon(body.pokemon_id);
-      if (!pokemon) {
-        throw {
-          name: variables.errNames.customValidation,
-          message: 'Pokemon data is not found!',
-          statusCode: 404
-        };
-      }
-
       await UserCapturedPokemonServices.capturePokemon(body, userData);
 
       return res.status(201).json({
@@ -38,15 +29,6 @@ export class UserCapturedPokemonControllers {
   static async destroy(req, res, next) {
     try {
       const { params, userData } = req;
-
-      const pokemon = await PokemonServices.getPokemon(params.pokemonId);
-      if (!pokemon) {
-        throw {
-          name: variables.errNames.customValidation,
-          message: 'Pokemon data is not found!',
-          statusCode: 404
-        };
-      }
 
       await UserCapturedPokemonServices.uncapturePokemon(
         params.pokemonId, userData

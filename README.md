@@ -19,10 +19,10 @@
 
 ### Environment: ###
 
+* NODE_ENV=development
 * PORT=3001
 * JWT_SECRET=1jwtSecretKey1
 * JWT_LIFETIME=10
-* BCRYPT_SALT=10
 * DB_NAME=ta_db
 * DB_USER=postgres
 * DB_PWD=postgres
@@ -220,7 +220,7 @@ Response (200 - OK):
 ```
 
 ### 5. Delete Pokemon Endpoint
-## DELETE /pokemon/:id
+## PATCH /pokemon/delete/:id
 
 Headers:
 Key | Desc

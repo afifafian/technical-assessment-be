@@ -5,6 +5,7 @@ export default {
     userCapturedPokemon: 'user_captured_pokemon',
   },
   pokemonTypes: ['GRASS', 'PSYCHIC', 'FIRE', 'FLYING', 'WATER', 'ELECTRIC', 'BUG'],
+  pokemonStatus: { active: 'ACTIVE', deleted: 'DELETED' },
   roles: {
     admin: 'Admin',
     user: 'User',
