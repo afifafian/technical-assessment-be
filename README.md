@@ -45,10 +45,9 @@ sortBy | sort list of pokemon by id or name, default to id
 sortType | order the sortBy to be ascending or descending, default to ascending
 
 Example:
-```json
-/pokemon?type=water,electric&search=pika&sortBy=name&sortType=desc
-```
+`/pokemon?type=water,electric&search=pika&sortBy=name&sortType=desc`
 ​
+
 Response (200 - OK):
 ​
 ```json
