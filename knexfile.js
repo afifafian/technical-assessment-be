@@ -1,14 +1,15 @@
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
+import {} from 'dotenv/config';
 export default {
 
   development: {
     client: 'postgresql',
     connection: {
-      database: process.env.DB_NAME || 'postgres',
-      user:     process.env.DB_USER || 'postgres',
-      password: process.env.DB_PWD || 'postgres',
+      database: process.env.DB_NAME,
+      user:     process.env.DB_USER,
+      password: process.env.DB_PWD,
       host: 'localhost',
       port: 5432,
     },
