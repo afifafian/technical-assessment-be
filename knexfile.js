@@ -6,9 +6,9 @@ export default {
   development: {
     client: 'postgresql',
     connection: {
-      database: process.env.DB_NAME,
-      user:     process.env.DB_USER,
-      password: process.env.DB_PWD,
+      database: process.env.DB_NAME || 'postgres',
+      user:     process.env.DB_USER || 'postgres',
+      password: process.env.DB_PWD || 'postgres',
       host: 'localhost',
       port: 5432,
     },
